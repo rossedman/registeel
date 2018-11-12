@@ -1,0 +1,28 @@
+{
+  "deployments": [
+    {
+      "id": "b16fe055-17a8-4fa6-8318-691b7ab8f9ce",
+      "name": "fake-deploy",
+      "namespace": "default",
+      "labels": {
+        "app": "fake",
+        "role": "frontend"
+      }
+    }
+  ],
+  "namespaces": [
+    {
+      "id": "2f2740f4-f03d-4180-95cb-b2c91e6cbb13",
+      "namespace": "nothing",
+      "apps": [
+        {
+          "name": "fake-deploy",
+          "labels": {
+            "app": "fake",
+            "role": "frontend"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+---
+# frontend service
+kind: Service
+apiVersion: v1
+metadata:
+  name: registeel-web
+  namespace: registeel
+  labels:
+    app: registeel
+    role: web
+spec:
+  selector:
+    app: registeel
+  ports:
+  - port: 80
+    targetPort: 80
+---
+# frontend deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registeel-web
+  namespace: registeel
+  labels:
+    app: registeel
+    role: web
+spec:
+  selector:
+    matchLabels:
+      app: registeel
+      role: web
+  template:
+    metadata:
+      labels:
+        app: registeel
+        role: web
+    spec:
+      containers:
+      - name: registeel
+        image: rossedman/registeel-web:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80

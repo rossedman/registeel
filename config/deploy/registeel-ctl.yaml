@@ -1,0 +1,61 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: 2018-11-12T22:21:12Z
+  name: registeel-ctl
+  namespace: registeel
+---
+# rbac permissiong for controller
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: registeel-ctl
+rules:
+- apiGroups: ["", "extensions", "apps"] # "" indicates the core API group
+  resources: ["deployments", "replicasets", "pods"]
+  verbs: ["get", "list", "update", "edit", "watch"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: registeel-ctl
+subjects:
+- kind: ServiceAccount
+  name: registeel-ctl
+  namespace: registeel
+roleRef:
+  kind: ClusterRole
+  name: registeel-ctl
+  apiGroup: rbac.authorization.k8s.io
+---
+# controller deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registeel-ctl
+  namespace: registeel
+  labels:
+    app: registeel
+    role: controller
+spec:
+  selector:
+    matchLabels:
+      app: registeel
+      role: controller
+  template:
+    metadata:
+      labels:
+        app: registeel
+        role: controller
+    spec:
+      # this service account has the ability to 
+      # alter deployments in the kubernetes api
+      serviceAccountName: registeel-ctl
+      containers:
+      - name: registeel
+        image: rossedman/registeel-ctl:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: REGISTEEL_API_ADDRESS
+          value: registeel-api

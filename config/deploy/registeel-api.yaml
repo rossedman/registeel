@@ -1,0 +1,44 @@
+---
+# api service
+kind: Service
+apiVersion: v1
+metadata:
+  name: registeel-api
+  namespace: registeel
+  labels:
+    app: registeel
+    role: api
+spec:
+  selector:
+    app: registeel
+    role: api
+  ports:
+  - port: 80
+    targetPort: 80
+---
+# api deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registeel-api
+  namespace: registeel
+  labels:
+    app: registeel
+    role: api
+spec:
+  selector:
+    matchLabels:
+      app: registeel
+      role: api
+  template:
+    metadata:
+      labels:
+        app: registeel
+        role: api
+    spec:
+      containers:
+      - name: registeel
+        image: rossedman/registeel-api:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
