@@ -9,20 +9,5 @@
         "role": "frontend"
       }
     }
-  ],
-  "namespaces": [
-    {
-      "id": "2f2740f4-f03d-4180-95cb-b2c91e6cbb13",
-      "namespace": "nothing",
-      "apps": [
-        {
-          "name": "fake-deploy",
-          "labels": {
-            "app": "fake",
-            "role": "frontend"
-          }
-        }
-      ]
-    }
   ]
 }

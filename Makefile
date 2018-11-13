@@ -4,7 +4,7 @@ build:
 	go build -o bin/registeel
 
 docker:
-	docker build -t rossedman/registeel:latest .
+	docker build -t rossedman/registeel-ctl:latest .
 	docker build -t rossedman/registeel-api:latest ./api
 	docker build -t rossedman/registeel-web:latest ./web
 

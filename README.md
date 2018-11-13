@@ -15,9 +15,10 @@ This will start a kubernetes cluster and activate a registry, once your docker c
 
 ```
 minikube start
-minikube addons enable ingress
 minikube addons enable registry
 eval $(minikube docker-env)
 make docker
 kubectl apply -f config/deploy
+minikube service -n registeel registeel-api
+minikube service -n registeel registeel-web
 ```

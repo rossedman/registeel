@@ -14,6 +14,7 @@ spec:
   ports:
   - port: 80
     targetPort: 80
+  type: LoadBalancer
 ---
 # frontend deployment
 apiVersion: apps/v1
