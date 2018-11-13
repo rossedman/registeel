@@ -18,8 +18,6 @@
 <script>
 import axios from 'axios';
 
-console.log(process.env)
-
 export default {
   data() {
     return {
@@ -28,7 +26,7 @@ export default {
     }
   },
   created() {
-    axios.get(process.env.VUE_APP_REGISTEEL_API)
+    axios.get(`http://localhost:30445/deployments`)
     .then(response => {
       this.deployments = response.data
     })

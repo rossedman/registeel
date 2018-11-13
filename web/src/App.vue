@@ -3,7 +3,9 @@
     <div class="header">
       <img id="logo" class="mx-auto text-center" alt="Registeel" src="./assets/logo.png">
     </div>
-    <Deployments/>
+    <div class="container">
+      <Deployments/>
+    </div>
   </div>
 </template>
 

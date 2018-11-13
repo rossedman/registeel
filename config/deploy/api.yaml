@@ -13,7 +13,8 @@ spec:
   ports:
   - port: 80
     targetPort: 80
-  type: LoadBalancer
+    nodePort: 30445
+  type: NodePort
 ---
 # api deployment
 apiVersion: apps/v1
