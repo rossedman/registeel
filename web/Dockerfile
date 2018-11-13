@@ -1,3 +1,9 @@
-FROM nginx:latest
+FROM node:9.11.1-alpine as builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
 
-COPY ./public /usr/share/nginx/html
+FROM nginx:latest
+COPY --from=builder /app/dist /usr/share/nginx/html

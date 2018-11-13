@@ -1,0 +1,28 @@
+---
+# controller deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registeel-ctl
+  namespace: registeel
+  labels:
+    app: registeel-ctl
+spec:
+  selector:
+    matchLabels:
+      app: registeel-ctl
+  template:
+    metadata:
+      labels:
+        app: registeel-ctl
+    spec:
+      # this service account has the ability to 
+      # alter deployments in the kubernetes api
+      serviceAccountName: registeel-ctl
+      containers:
+      - name: registeel
+        image: rossedman/registeel-ctl:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: REGISTEEL_API_ADDRESS
+          value: http://registeel-api/deployments

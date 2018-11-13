@@ -1,26 +1,20 @@
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
-    <title>Stratus</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>Registeel!</title>
     <link href="https://unpkg.com/primer/build/build.css" rel="stylesheet">
-</head>
-<body>
-    <div class="">
-        <div class="flex-row flex-lg-column main-content px-3 pt-3" id="app">
-            <div class="clearfix">
-                <div class="Box mb-3">
-                    <div class="Box-header">
-                        <h3 class="Box-title">Deployments</h3>
-                    </div>
-                    <div v-for="deploy in deployments" class="Box-body">
-                        <strong>{{ deploy.name }}</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but registeel-web doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div class="container clearfix">
+      <div id="app"></div>
     </div>
-    <script src="https://unpkg.com/vue"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./app.js"></script>
-</body>
+    <!-- built files will be auto injected -->
+  </body>
 </html>

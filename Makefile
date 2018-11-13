@@ -14,5 +14,6 @@ release:
 	docker push rossedman/registeel-web:latest
 
 vuesetup:
+	npm install -g @vue/cli
 	npm install -g @vue/cli-service-global
 

@@ -1,8 +1,12 @@
 # Registeel
 
+![registeel](./registeel.png)
+
 > Tempered by pressure underground over tens of thousands of years, its body cannot be scratched.
 
 This is a simple app that demonstrates how to build a simple Kubernetes controller. It sends metadata about pods to a mock api service which a frontend then queries and displays information from. 
+
+The name has no meaning except its a **pokemon** that sounds like the word _register_
 
 - */api* - this is a simple [json-server](https://github.com/typicode/json-server) that is meant as a mock data store that controllers can be tested against
 - */config* - holds the kubernetes deployment as a well as a test nginx deployment for showing how the controller updates 
